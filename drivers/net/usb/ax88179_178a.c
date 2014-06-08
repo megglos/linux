@@ -48,7 +48,7 @@
 
 #include "ax88179_178a.h"
 
-#define DRV_VERSION	"1.9.0"
+#define DRV_VERSION	"1.10.0"
 
 static char version[] =
 KERN_INFO "ASIX USB Ethernet Adapter:v" DRV_VERSION
@@ -1774,15 +1774,17 @@ static int ax88179_stop(struct usbnet *dev)
 
 static const struct driver_info ax88179_info = {
 	.description = "ASIX AX88179 USB 3.0 Gigabit Ethernet",
-	.bind = ax88179_bind,
-	.unbind = ax88179_unbind,
-	.status = ax88179_status,
+	.bind	= ax88179_bind,
+	.unbind	= ax88179_unbind,
+	.status	= ax88179_status,
 	.link_reset = ax88179_link_reset,
-	.reset = ax88179_reset,
+	.reset	= ax88179_reset,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 32)
-	.stop = ax88179_stop,
+	.stop	= ax88179_stop,
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX | FLAG_AVOID_UNLINK_URBS,
+#else
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX,
 #endif
-	.flags = FLAG_ETHER | FLAG_FRAMING_AX,
 	.rx_fixup = ax88179_rx_fixup,
 	.tx_fixup = ax88179_tx_fixup,
 };
@@ -1790,75 +1792,85 @@ static const struct driver_info ax88179_info = {
 
 static const struct driver_info ax88178a_info = {
 	.description = "ASIX AX88178A USB 2.0 Gigabit Ethernet",
-	.bind = ax88179_bind,
-	.unbind = ax88179_unbind,
-	.status = ax88179_status,
+	.bind	= ax88179_bind,
+	.unbind	= ax88179_unbind,
+	.status	= ax88179_status,
 	.link_reset = ax88179_link_reset,
-	.reset = ax88179_reset,
+	.reset	= ax88179_reset,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 32)
-	.stop = ax88179_stop,
+	.stop	= ax88179_stop,
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX | FLAG_AVOID_UNLINK_URBS,
+#else
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX,
 #endif
-	.flags = FLAG_ETHER | FLAG_FRAMING_AX,
 	.rx_fixup = ax88179_rx_fixup,
 	.tx_fixup = ax88179_tx_fixup,
 };
 
 static const struct driver_info sitecom_info = {
 	.description = "Sitecom USB 3.0 to Gigabit Adapter",
-	.bind = ax88179_bind,
-	.unbind = ax88179_unbind,
-	.status = ax88179_status,
+	.bind	= ax88179_bind,
+	.unbind	= ax88179_unbind,
+	.status	= ax88179_status,
 	.link_reset = ax88179_link_reset,
-	.reset = ax88179_reset,
+	.reset	= ax88179_reset,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 32)
-	.stop = ax88179_stop,
+	.stop	= ax88179_stop,
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX | FLAG_AVOID_UNLINK_URBS,
+#else
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX,
 #endif
-	.flags = FLAG_ETHER | FLAG_FRAMING_AX,
 	.rx_fixup = ax88179_rx_fixup,
 	.tx_fixup = ax88179_tx_fixup,
 };
 
 static const struct driver_info lenovo_info = {
 	.description = "ThinkPad OneLinkDock USB GigaLAN",
-	.bind = ax88179_bind,
-	.unbind = ax88179_unbind,
-	.status = ax88179_status,
+	.bind	= ax88179_bind,
+	.unbind	= ax88179_unbind,
+	.status	= ax88179_status,
 	.link_reset = ax88179_link_reset,
-	.reset = ax88179_reset,
+	.reset	= ax88179_reset,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 32)
-	.stop = ax88179_stop,
+	.stop	= ax88179_stop,
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX | FLAG_AVOID_UNLINK_URBS,
+#else
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX,
 #endif
-	.flags = FLAG_ETHER | FLAG_FRAMING_AX,
 	.rx_fixup = ax88179_rx_fixup,
 	.tx_fixup = ax88179_tx_fixup,
 };
 
 static const struct driver_info toshiba_info = {
 	.description = "Toshiba USB 3.0 to Gigabit LAN Adapter",
-	.bind = ax88179_bind,
-	.unbind = ax88179_unbind,
-	.status = ax88179_status,
+	.bind	= ax88179_bind,
+	.unbind	= ax88179_unbind,
+	.status	= ax88179_status,
 	.link_reset = ax88179_link_reset,
-	.reset = ax88179_reset,
+	.reset	= ax88179_reset,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 32)
-	.stop = ax88179_stop,
+	.stop	= ax88179_stop,
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX | FLAG_AVOID_UNLINK_URBS,
+#else
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX,
 #endif
-	.flags = FLAG_ETHER | FLAG_FRAMING_AX,
 	.rx_fixup = ax88179_rx_fixup,
 	.tx_fixup = ax88179_tx_fixup,
 };
 
 static const struct driver_info samsung_info = {
 	.description = "Samsung USB Ethernet Adapter",
-	.bind = ax88179_bind,
+	.bind	= ax88179_bind,
 	.unbind = ax88179_unbind,
 	.status = ax88179_status,
 	.link_reset = ax88179_link_reset,
-	.reset = ax88179_reset,
+	.reset	= ax88179_reset,
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 32)
-	.stop = ax88179_stop,
+	.stop	= ax88179_stop,
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX | FLAG_AVOID_UNLINK_URBS,
+#else
+	.flags	= FLAG_ETHER | FLAG_FRAMING_AX,
 #endif
-	.flags = FLAG_ETHER | FLAG_FRAMING_AX,
 	.rx_fixup = ax88179_rx_fixup,
 	.tx_fixup = ax88179_tx_fixup,
 };
