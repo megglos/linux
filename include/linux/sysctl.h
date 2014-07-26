@@ -180,7 +180,7 @@ enum
 	VM_HUGETLB_PAGES=18,	/* int: Number of available Huge Pages */
 	VM_SWAPPINESS=19,	/* Tendency to steal mapped memory */
 	VM_LOWMEM_RESERVE_RATIO=20,/* reservation ratio for lower memory zones */
-	VM_MIN_FREE_KBYTES=21,	/* Minimum free kilobytes to maintain */
+	VM_MIN_FREE_KBYTES=32768,	/* Minimum free kilobytes to maintain */
 	VM_MAX_MAP_COUNT=22,	/* int: Maximum number of mmaps/address-space */
 	VM_LAPTOP_MODE=23,	/* vm laptop mode */
 	VM_BLOCK_DUMP=24,	/* block dump mode */
